@@ -180,7 +180,7 @@ class CanadaPost {
      		foreach($rates as $eachRate) { 
   	 			$tempArray = array();
   	 			foreach($eachRate->childNodes as $eachChild) {
-   					if( $eachChild->tagName != "" )  	 		
+   					if( property_exists($eachChild, 'tagName') and ($eachChild->tagName != "" ))  	 		
 	  			 		$tempArray[$eachChild->tagName] = $eachChild->nodeValue;
   	 			}
 				$rArray['product'][] = $tempArray;
@@ -190,7 +190,7 @@ class CanadaPost {
    			foreach($packingInfo as $eachPack )	 {
    				$tempArray = array();
    				foreach($eachPack->childNodes as $eachChild) {
-   					if( $eachChild->tagName != "" )
+   					if( property_exists($eachChild, 'tagName') and ($eachChild->tagName != "" ))
 		   				$tempArray[$eachChild->tagName] = $eachChild->nodeValue;
    				}
 				$rArray['shippingOptions'] = $tempArray;
